@@ -13,6 +13,7 @@ t_env	*init_env(void)
 	}
 	e->w = 2080;
 	e->h = 1350;
+	e->zoom = 1;
 	if (!(e->win = mlx_new_window(e->mlx, e->w, e->h, "fdf")))
 		return (NULL);
 	return (e);
@@ -84,7 +85,7 @@ void	ft_draw_line(t_env *e, int i, int k)
 				calc->cumul -= calc->dy;
 				x += calc->xinc;
 			}
-			mlx_pixel_put(e->mlx, e->win, xe->move_x, y + e->move_y, 0xFFF3B8);
+			mlx_pixel_put(e->mlx, e->win, x + e->move_x, y + e->move_y, 0xFFF3B8);
 			j++;
 		}
 	}
@@ -136,12 +137,58 @@ int		key_hook(int keycode, t_env *e)
 	{
 		mlx_clear_window(e->mlx, e->win);
 		e->tab = ft_init_coor_iso(e);
+		e->iso = 1;
 		expose_hook(e);
 	}
 	if (keycode == 35)
 	{
 		mlx_clear_window(e->mlx, e->win);
 		e->tab = ft_init_coor_par(e);
+		e->iso = 0;
+		expose_hook(e);
+	}
+	if (keycode == 69)
+	{
+		e->zoom = (e->zoom + 0.2) > 10 ? 9.8 : e->zoom + 0.2;
+		mlx_clear_window(e->mlx, e->win);
+		if (e->iso)
+			e->tab = ft_init_coor_iso(e);
+		else
+			e->tab = ft_init_coor_par(e);
+		expose_hook(e);
+	}
+	if (keycode == 78)
+	{
+		e->zoom = ((e->zoom * 0.8) < 0.4 ? 0.45 : e->zoom * 0.8);
+		mlx_clear_window(e->mlx, e->win);
+		if (e->iso)
+			e->tab = ft_init_coor_iso(e);
+		else
+			e->tab = ft_init_coor_par(e);
+		expose_hook(e);
+	}
+	if (keycode == 123)
+	{
+		e->move_x = e->move_x - 30;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}
+	if (keycode == 124)
+	{
+		e->move_x = e->move_x + 30;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}
+	if (keycode == 125)
+	{
+		e->move_y = e->move_y + 30;
+		mlx_clear_window(e->mlx, e->win);
+		expose_hook(e);
+	}
+	if (keycode == 126)
+	{
+		e->move_y = e->move_y - 30;
+		mlx_clear_window(e->mlx, e->win);
 		expose_hook(e);
 	}
 	return (1);
@@ -302,9 +349,9 @@ t_coor		*ft_init_coor_par(t_env *e)
 	i = 0;
 	while (i < e->nb_case)
 	{
-		tmp = 500 + ((e->tab_ori[i]).x * 50) + CONST * ((e->tab_ori[i]).z * 5);
+		tmp = 500 + ((e->tab_ori[i]).x * 50) * e->zoom + CONST * ((e->tab_ori[i]).z * 5) * e->zoom;
 		tab[i].x = (int)(tmp + 0.5);
-		tmp = 300 + ((e->tab_ori[i]).y * 50) + (CONST / 2) * ((e->tab_ori[i]).z * 5);
+		tmp = 300 + ((e->tab_ori[i]).y * 50) * e->zoom + (CONST / 2) * ((e->tab_ori[i]).z * 5) * e->zoom;
 		tab[i].y = (int)(tmp + 0.5);
 		i++;
 	}
@@ -322,9 +369,9 @@ t_coor		*ft_init_coor_iso(t_env *e)
 	i = 0;
 	while (i < e->nb_case)
 	{
-		tmp = 900 + CONSTX * ((e->tab_ori[i]).x * 50) - CONSTY * ((e->tab_ori[i]).y * 50);
+		tmp = 900 + CONSTX * ((e->tab_ori[i]).x * 50) * e->zoom - CONSTY * ((e->tab_ori[i]).y * 50) * e->zoom;
 		tab[i].x = (int)(tmp + 0.5);
-		tmp = 300 + ((e->tab_ori[i]).z * 5) + CONSTX / 2 * ((e->tab_ori[i]).x * 50) + CONSTY / 2 * ((e->tab_ori[i]).y * 50);
+		tmp = 300 + ((e->tab_ori[i]).z * -5) * e->zoom + CONSTX / 2 * ((e->tab_ori[i]).x * 50) * e->zoom + CONSTY / 2 * ((e->tab_ori[i]).y * 50) * e->zoom;
 		tab[i].y = (int)(tmp + 0.5);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 11:56:19 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/02 18:09:10 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/02 19:05:11 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef	struct	s_env
 	int			nb_case;
 	int			move_x;
 	int			move_y;
+	float		zoom;
+	int			iso;
 }				t_env;
 
 t_env	*init_env(void);
