@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 12:06:07 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/01 16:22:38 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:36:16 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include "libft.h"
 
-#define BUFF_SIZE 4096
+# define BUFF_SIZE 4096
 
 int		get_next_line(const int fd, char **line);
 

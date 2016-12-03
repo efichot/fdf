@@ -6,11 +6,11 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:51:45 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 15:41:39 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:53:37 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./includes/fdf.h"
 
 t_env	*init_env(void)
 {
@@ -20,7 +20,7 @@ t_env	*init_env(void)
 		return (NULL);
 	if (!(e->mlx = mlx_init()))
 	{
- 		ft_putstr_fd("Error minilibx init\n", 2);
+		ft_putstr_fd("Error minilibx init\n", 2);
 		return (NULL);
 	}
 	e->w = 2080;
@@ -46,7 +46,8 @@ void	ft_write_order(t_env *e)
 {
 	mlx_string_put(e->mlx, e->win, 35, 35, TEXT_COLOR, "Quit = ESC");
 	mlx_string_put(e->mlx, e->win, 35, 55, TEXT_COLOR, "Move = ^ v < >");
-	mlx_string_put(e->mlx, e->win, 35, 75, TEXT_COLOR, "Zoom = + - or scrolling");
+	mlx_string_put(e->mlx, e->win, 35, 75, TEXT_COLOR,
+		"Zoom = + - or scrolling");
 	mlx_string_put(e->mlx, e->win, 35, 95, TEXT_COLOR, "Isometric = i");
 	mlx_string_put(e->mlx, e->win, 35, 115, TEXT_COLOR, "Parallel = p");
 	mlx_string_put(e->mlx, e->win, 35, 135, TEXT_COLOR, "Increase z = *");

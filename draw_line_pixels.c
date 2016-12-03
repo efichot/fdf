@@ -6,11 +6,11 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:53:26 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 16:20:08 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:53:27 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./includes/fdf.h"
 
 void	ft_draw_pixels(t_env *e)
 {

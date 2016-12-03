@@ -6,11 +6,11 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:31:31 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 15:42:24 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:53:39 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./includes/fdf.h"
 
 t_coor		*ft_init_coor_par(t_env *e)
 {

@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 11:56:19 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 16:20:34 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:34:40 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_calc
 	int			cumul;
 }				t_calc;
 
-typedef	struct	s_env
+typedef struct	s_env
 {
 	void		*mlx;
 	void		*win;

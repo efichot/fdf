@@ -6,18 +6,17 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:34:37 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 15:42:18 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/03 16:53:54 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "./includes/fdf.h"
 
 int			*ft_atoi_line(char *line, t_env *e)
 {
 	char	**nb;
 	int		*tab_line;
 	int		i;
-	int		j;
 
 	if (!(nb = ft_strsplit(line, ' ')))
 		return (NULL);
@@ -38,7 +37,6 @@ int			*ft_atoi_line(char *line, t_env *e)
 
 int			ft_read(int fd, char **file)
 {
-	int		**tab;
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
 	char	*tmp;
@@ -110,7 +108,6 @@ void		ft_verif_value(t_env *e)
 
 t_coor		*ft_put_in_tab_struct(char **file, t_env *e)
 {
-	int		line;
 	char	**tab_line;
 	int		nb_line;
 	int		**tab_int;
