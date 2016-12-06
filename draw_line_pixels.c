@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:53:26 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 16:53:27 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/06 17:39:46 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ void	ft_draw_pixels(t_env *e)
 	i = 0;
 	while (i < e->nb_case)
 	{
-		mlx_pixel_put(e->mlx, e->win, (e->tab[i]).x + e->move_x,
-		(e->tab[i]).y + e->move_y, BASE_COLOR);
+		ft_put_pixel(e, (e->tab[i]).x, (e->tab[i]).y, (e->tab[i]).z);
 		i++;
 	}
 }
 
-void	ft_draw_line_x(int i, t_calc *calc, t_env *e)
+void	ft_draw_line_x(int i, int k, t_calc *calc, t_env *e)
 {
 	int		x;
 	int		y;
@@ -44,13 +43,12 @@ void	ft_draw_line_x(int i, t_calc *calc, t_env *e)
 			calc->cumul -= calc->dx;
 			y += calc->yinc;
 		}
-		mlx_pixel_put(e->mlx, e->win, x + e->move_x,
-			y + e->move_y, BASE_COLOR);
+		ft_put_pixel(e, x, y, ft_color(i, k, e, j));
 		j++;
 	}
 }
 
-void	ft_draw_line_y(int i, t_calc *calc, t_env *e)
+void	ft_draw_line_y(int i, int k, t_calc *calc, t_env *e)
 {
 	int		x;
 	int		y;
@@ -69,8 +67,7 @@ void	ft_draw_line_y(int i, t_calc *calc, t_env *e)
 			calc->cumul -= calc->dy;
 			x += calc->xinc;
 		}
-		mlx_pixel_put(e->mlx, e->win, x + e->move_x,
-			y + e->move_y, BASE_COLOR);
+		ft_put_pixel(e, x, y, ft_color(i, k, e, j));
 		j++;
 	}
 }
@@ -88,9 +85,9 @@ void	ft_draw_line(t_env *e, int i, int k)
 	calc->dx = (calc->dx >= 0) ? calc->dx : -calc->dx;
 	calc->dy = (calc->dy >= 0) ? calc->dy : -calc->dy;
 	if (calc->dx >= calc->dy)
-		ft_draw_line_x(i, calc, e);
+		ft_draw_line_x(i, k, calc, e);
 	else
-		ft_draw_line_y(i, calc, e);
+		ft_draw_line_y(i, k, calc, e);
 	free(calc);
 	calc = NULL;
 }

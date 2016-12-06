@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/03 14:51:45 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 16:53:37 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/06 18:17:35 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_write_order(t_env *e)
 	mlx_string_put(e->mlx, e->win, 35, 195, TEXT_COLOR, "Decrease x = 2");
 	mlx_string_put(e->mlx, e->win, 35, 215, TEXT_COLOR, "Increase z = 4");
 	mlx_string_put(e->mlx, e->win, 35, 235, TEXT_COLOR, "Decrease z = 5");
+	mlx_string_put(e->mlx, e->win, 35, 255, TEXT_COLOR, "Change color = .");
 }
 
 int		expose_hook(t_env *e)

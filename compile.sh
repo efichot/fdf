@@ -1,1 +1,0 @@
-gcc -g -Werror -Wextra -Werror -L/usr/local/include -lmlx -framework OpenGL -framework AppKit -L./libft/ -lft -o mlx srcs/fdf.c srcs/draw_line_pixels.c srcs/hook.c srcs/init_and_expose.c srcs/init_coor.c srcs/key_hook.c srcs/key_hook_2.c srcs/read_and_save.c

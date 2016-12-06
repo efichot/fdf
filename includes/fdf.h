@@ -6,7 +6,7 @@
 /*   By: efichot <efichot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 11:56:19 by efichot           #+#    #+#             */
-/*   Updated: 2016/12/03 16:34:40 by efichot          ###   ########.fr       */
+/*   Updated: 2016/12/06 18:11:34 by efichot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define CONSTY 0.7
 # define CONST 0.5
 # define BASE_COLOR 0xed5a5a
-# define TEXT_COLOR 0xed5a5a
+# define HIGHT_COLOR 0xff0000
+# define TEXT_COLOR 0xAAAAAA
 
 typedef struct	s_coor
 {
@@ -60,6 +61,7 @@ typedef struct	s_env
 	int			cz;
 	int			cx;
 	int			cy;
+	int			cb;
 }				t_env;
 
 t_env			*init_env(void);
@@ -86,7 +88,11 @@ void			ft_draw_lines(t_env *e);
 void			ft_draw_pixels(t_env *e);
 void			ft_draw_line(t_env *e, int i, int k);
 void			ft_write_order(t_env *e);
-void			ft_draw_line_x(int i, t_calc *calc, t_env *e);
-void			ft_draw_line_y(int i, t_calc *calc, t_env *e);
+void			ft_draw_line_x(int i, int k, t_calc *calc, t_env *e);
+void			ft_draw_line_y(int i, int k, t_calc *calc, t_env *e);
+int				ft_put_pixel(t_env *e, int x, int y, int color);
+int				ft_color(int i, int k, t_env *e, int j);
+int				ft_color_bis(int coef);
+int				key_hook_7(int keycode, t_env *e);
 
 #endif
